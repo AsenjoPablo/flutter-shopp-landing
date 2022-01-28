@@ -146,25 +146,23 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ],
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.45,
-                    decoration: BoxDecoration(),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 48, 0, 32),
-                      child: Text(
-                        'Find exactly what you need thanks to Shopp',
-                        style: FlutterFlowTheme.title1.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                          fontSize: 42,
-                          fontWeight: FontWeight.normal,
-                          lineHeight: 1.5,
-                        ),
-                      ).animated([animationsMap['textOnPageLoadAnimation1']]),
-                    ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 48, 0, 32),
+                    child: Text(
+                      'Find exactly what you need thanks to Shopp',
+                      style: FlutterFlowTheme.title1.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                        fontSize: 42,
+                        fontWeight: FontWeight.normal,
+                        lineHeight: 1.5,
+                      ),
+                    ).animated([animationsMap['textOnPageLoadAnimation1']]),
                   ),
-                  Expanded(
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: 130,
+                    decoration: BoxDecoration(),
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
                       height: 200,
@@ -196,31 +194,26 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ),
                           Align(
                             alignment: AlignmentDirectional(-0.8, 1),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 96),
-                              child: SmoothPageIndicator(
-                                controller: pageViewController ??=
-                                    PageController(initialPage: 0),
-                                count: 2,
-                                axisDirection: Axis.horizontal,
-                                onDotClicked: (i) {
-                                  pageViewController.animateToPage(
-                                    i,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.ease,
-                                  );
-                                },
-                                effect: SlideEffect(
-                                  spacing: 8,
-                                  radius: 16,
-                                  dotWidth: 8,
-                                  dotHeight: 8,
-                                  dotColor: Color(0xFF9E9E9E),
-                                  activeDotColor:
-                                      FlutterFlowTheme.tertiaryColor,
-                                  paintStyle: PaintingStyle.fill,
-                                ),
+                            child: SmoothPageIndicator(
+                              controller: pageViewController ??=
+                                  PageController(initialPage: 0),
+                              count: 2,
+                              axisDirection: Axis.horizontal,
+                              onDotClicked: (i) {
+                                pageViewController.animateToPage(
+                                  i,
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              effect: SlideEffect(
+                                spacing: 8,
+                                radius: 16,
+                                dotWidth: 8,
+                                dotHeight: 8,
+                                dotColor: Color(0xFF9E9E9E),
+                                activeDotColor: FlutterFlowTheme.tertiaryColor,
+                                paintStyle: PaintingStyle.fill,
                               ),
                             ),
                           ),
@@ -228,35 +221,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(1, 0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Start exploring',
-                      options: FFButtonOptions(
-                        width: 160,
-                        height: 40,
-                        color: FlutterFlowTheme.tertiaryColor,
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.black,
-                        ),
-                        elevation: 4,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(1, 0.15),
+              alignment: AlignmentDirectional(1, 0.25),
               child: Container(
                 width: 120,
                 height: 120,
@@ -270,6 +239,30 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   fit: BoxFit.cover,
                 ),
               ).animated([animationsMap['circleImageOnPageLoadAnimation']]),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0.8, 0.85),
+              child: FFButtonWidget(
+                onPressed: () {
+                  print('Button pressed ...');
+                },
+                text: 'Start exploring',
+                options: FFButtonOptions(
+                  width: 160,
+                  height: 40,
+                  color: FlutterFlowTheme.tertiaryColor,
+                  textStyle: FlutterFlowTheme.subtitle2.override(
+                    fontFamily: 'Poppins',
+                    color: Colors.black,
+                  ),
+                  elevation: 4,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: 12,
+                ),
+              ),
             ),
           ],
         ),
