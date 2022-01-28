@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,9 +14,67 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>
+    with TickerProviderStateMixin {
   PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'textOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, -26),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'textOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(-27, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'circleImageOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +157,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         fontWeight: FontWeight.normal,
                         lineHeight: 1.5,
                       ),
-                    ),
+                    ).animated([animationsMap['textOnPageLoadAnimation1']]),
                   ),
                   Expanded(
                     child: Container(
@@ -118,7 +177,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   color: Color(0xCAFFFFFF),
                                   lineHeight: 1.5,
                                 ),
-                              ),
+                              ).animated(
+                                  [animationsMap['textOnPageLoadAnimation2']]),
                               Text(
                                 'Find thousands of items for the right price and save tons of money just by using our app. Saving made simple!',
                                 style: FlutterFlowTheme.bodyText1.override(
@@ -204,7 +264,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       'https://images.unsplash.com/photo-1550480082-dd9c35032f45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
                   fit: BoxFit.cover,
                 ),
-              ),
+              ).animated([animationsMap['circleImageOnPageLoadAnimation']]),
             ),
           ],
         ),
