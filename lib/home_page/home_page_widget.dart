@@ -146,18 +146,23 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 48, 0, 32),
-                    child: Text(
-                      'Find exactly what you need thanks to Shopp',
-                      style: FlutterFlowTheme.title1.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                        fontSize: 42,
-                        fontWeight: FontWeight.normal,
-                        lineHeight: 1.5,
-                      ),
-                    ).animated([animationsMap['textOnPageLoadAnimation1']]),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    decoration: BoxDecoration(),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 48, 0, 32),
+                      child: Text(
+                        'Find exactly what you need thanks to Shopp',
+                        style: FlutterFlowTheme.title1.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 42,
+                          fontWeight: FontWeight.normal,
+                          lineHeight: 1.5,
+                        ),
+                      ).animated([animationsMap['textOnPageLoadAnimation1']]),
+                    ),
                   ),
                   Expanded(
                     child: Container(
